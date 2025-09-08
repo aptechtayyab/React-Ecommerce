@@ -1,0 +1,43 @@
+/* Hide unwanted elements during print */
+@media print {
+  nav,
+  footer,
+  .btn,
+  .navbar,
+  .news-letter-section,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .invoice-container {
+    max-width: 900px;
+    margin: auto;
+    font-family: "Arial", sans-serif;
+    color: #000;
+  }
+
+  h2, h3, h4, h5 {
+    margin: 0;
+    padding: 4px 0;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    width: 100%;
+  }
+
+  table, th, td {
+    border: 1px solid #000 !important;
+  }
+
+  th, td {
+    padding: 8px !important;
+    text-align: left;
+  }
+}

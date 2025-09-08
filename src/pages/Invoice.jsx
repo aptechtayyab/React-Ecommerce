@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DynamicTitle from "../hooks/DynamicTitle";
-
+import '../css/invoice.css'
 const Invoice = () => {
-  DynamicTitle("Ecom - Invoice")
-  
+  DynamicTitle("Ecom - Invoice");
+
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Invoice = () => {
     return (
       <main className="container py-5 text-center">
         <h3>No recent order found</h3>
-        <Link to="/products" className="btn btn-primary mt-3">
+        <Link to="/products" className="btn btn-primary mt-3 no-print">
           Browse Products
         </Link>
       </main>
@@ -33,21 +33,28 @@ const Invoice = () => {
   const formatDate = (iso) => new Date(iso).toLocaleString();
 
   return (
-    <main className="container py-5">
+    <main className="container py-5 invoice-container">
+      {/* Header */}
       <div className="d-flex justify-content-between align-items-start mb-4">
         <div>
-          <h3>Invoice</h3>
+          <h2 className="fw-bold">🧾 Invoice</h2>
           <div>Order ID: <strong>{order.id}</strong></div>
           <div>Date: {formatDate(order.date)}</div>
         </div>
-        <div className="text-end">
-          <button className="btn btn-outline-secondary me-2" onClick={() => window.print()}>
+        <div className="text-end no-print">
+          <button
+            className="btn btn-outline-secondary me-2"
+            onClick={() => window.print()}
+          >
             Print
           </button>
-          <Link to="/products" className="btn btn-primary">Continue Shopping</Link>
+          <Link to="/products" className="btn btn-primary">
+            Continue Shopping
+          </Link>
         </div>
       </div>
 
+      {/* Billing + Summary */}
       <div className="row mb-4">
         <div className="col-md-6">
           <h5>Billing To</h5>
@@ -67,6 +74,7 @@ const Invoice = () => {
         </div>
       </div>
 
+      {/* Order Items */}
       <div className="table-responsive">
         <table className="table align-middle">
           <thead>
@@ -82,7 +90,11 @@ const Invoice = () => {
             {order.items.map((it) => (
               <tr key={it.id}>
                 <td style={{ width: 100 }}>
-                  <img src={it.image} alt={it.title} style={{ width: 80, height: 80, objectFit: "cover" }} />
+                  <img
+                    src={it.image}
+                    alt={it.title}
+                    style={{ width: 80, height: 80, objectFit: "cover" }}
+                  />
                 </td>
                 <td>{it.title}</td>
                 <td>${Number(it.price).toFixed(2)}</td>
