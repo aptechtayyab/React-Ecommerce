@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useEffect } from "react";
 import "../css/header.css";
 
 const Header = () => {
   const { cartItems } = useCart();
-  // Unique products ka count
   const cartCount = cartItems.length;
+  const location = useLocation();
+
+  useEffect(() => {
+    // Jab bhi route change hoga -> collapse band ho jaye
+    const navbar = document.getElementById("navbarSupportedContent");
+    if (navbar && navbar.classList.contains("show")) {
+      navbar.classList.remove("show");
+    }
+  }, [location]);
 
   return (
     <nav className="navbar navbar-expand-lg">
