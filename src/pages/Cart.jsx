@@ -22,7 +22,7 @@ const Cart = () => {
   if (cartItems.length === 0) {
     return (
       <main className="container py-5 text-center">
-        <h2>Your cart is empty 🛒</h2>
+        <h2 className="text-center">Your cart is empty 🛒</h2>
         <Link to="/products" className="btn btn-primary mt-3">
           Go to Products
         </Link>

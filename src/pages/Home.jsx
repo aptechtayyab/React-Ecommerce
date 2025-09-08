@@ -37,6 +37,7 @@ const Home = () => {
           {productData.map((product) => (
             <div className="card-item" key={product.id}>
               <Card
+                id={product.id}
                 image={product.image}
                 title={product.title}
                 price={product.price}
@@ -63,7 +64,9 @@ const Home = () => {
         <form action="">
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
-          <a href="" className="btn">Subscribe</a>
+          <a href="" className="btn">
+            Subscribe
+          </a>
         </form>
       </div>
     </>

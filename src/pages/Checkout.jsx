@@ -220,7 +220,6 @@ const Checkout = () => {
             </button>
           </form>
         </div>
-
         {/* Order Summary */}
         <div className="col-md-5 mt-4">
           <div className="card p-3">
