@@ -1,10 +1,33 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify"; // ✅ import toast
 import "../css/home.css";
 
 const Card = (props) => {
   const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: props.id,
+      title: props.title,
+      image: props.image,
+      price: props.price,
+      description: props.description,
+      category: props.category,
+    });
+
+    // ✅ Toast notification
+    toast.success(`${props.title} added to cart 🛒`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
+  };
 
   return (
     <div className="card" style={{ width: "20rem" }}>
@@ -19,19 +42,7 @@ const Card = (props) => {
           View Details
         </Link>
 
-        <button
-          className="btn btncard"
-          onClick={() =>
-            addToCart({
-              id: props.id,
-              title: props.title,
-              image: props.image,
-              price: props.price,
-              description: props.description,
-              category: props.category,
-            })
-          }
-        >
+        <button className="btn btncard" onClick={handleAddToCart}>
           Add to Cart
         </button>
       </div>

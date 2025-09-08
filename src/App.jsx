@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import "./css/index.css";
@@ -11,6 +10,11 @@ import Invoice from "./pages/Invoice";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./pages/Cart";
 import ScrollToTop from "./hooks/ScrollToTop";
+
+// ✅ Toastify import
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   return (
     <CartProvider>
@@ -25,6 +29,9 @@ const App = () => {
         <Route path="/invoice" Component={Invoice} />
       </Routes>
       <Footer />
+
+      {/* ✅ Toast Container */}
+      <ToastContainer position="top-right" autoClose={2000} />
     </CartProvider>
   );
 };
