@@ -1,0 +1,155 @@
+.banner-container {
+  height: 85vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.banner-container .banner-content {
+  height: 80vh;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-container .banner-image {
+  height: 80vh;
+  width: 45%;
+}
+
+.banner-container .banner-content h1 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.card-section {
+  padding: 40px 0px;
+}
+
+/* Horizontal scroll container */
+.card-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+/* Each card fixed width for proper scrolling */
+.card-item {
+  min-width: 300px;
+  flex-shrink: 0;
+}
+
+.btncard {
+  background-color: black;
+  color: white;
+}
+
+.btn-banner {
+  background-color: black;
+  color: white;
+  margin-right: 10px;
+  padding: 20px 50px;
+}
+
+.card-section .card {
+  text-align: left;
+  padding: 10px;
+  box-shadow: rgba(38, 57, 77, 0.655) 0px 20px 30px -10px;
+  border-radius: 16px;
+  height: max-content;
+  position: relative;
+}
+
+.card img {
+  border-radius: 16px;
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+.featured-section {
+  padding: 30px;
+}
+
+.featured-sub-section {
+  height: 50vh;
+  width: 100%;
+  background-image: url('./featured.jpg');
+  border-radius: 16px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.featured-sub-section h1 {
+  color: white;
+  font-size: 50px;
+}
+
+.news-letter-section {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.news-letter-section h1 {
+  font-size: 60px;
+}
+
+.news-letter-section input {
+  height: 40px;
+  width: 300px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.726);
+}
+
+.news-letter-section input:focus {
+  outline: none !important;
+  background-color: rgb(233, 233, 233);
+}
+
+.news-letter-section a {
+  background-color: black;
+  color: white;
+}
+
+.card-category {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: rgb(0, 0, 0);
+  backdrop-filter: blur(5px);
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-size: 12px;
+  color: white;
+}
+
+/* Scrollbar styling */
+.card-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.card-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
