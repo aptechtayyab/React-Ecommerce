@@ -4,22 +4,30 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Load cart from localStorage or start with []
   const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
+    try {
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
   });
 
-  // Save cart to localStorage on every change
+  // save cart to localStorage on change
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Add product (avoid duplicates → increase quantity if exists)
+  // calculate total
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   const addToCart = (product) => {
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
+      const exist = prev.find((item) => item.id === product.id);
+      if (exist) {
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -34,7 +42,9 @@ export const CartProvider = ({ children }) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   const increaseQuantity = (id) => {
     setCartItems((prev) =>
@@ -47,8 +57,8 @@ export const CartProvider = ({ children }) => {
   const decreaseQuantity = (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
           : item
       )
     );
@@ -58,6 +68,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cartItems,
+        totalPrice, // 👈 yaha return karna zaroori hai
         addToCart,
         removeFromCart,
         clearCart,
@@ -70,5 +81,4 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-// ✅ Custom hook
 export const useCart = () => useContext(CartContext);

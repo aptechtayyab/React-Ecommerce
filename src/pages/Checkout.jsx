@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 import DynamicTitle from "../hooks/DynamicTitle";
 
 const Checkout = () => {
-  DynamicTitle("Ecom - Checkout")
+  DynamicTitle("Ecom - Checkout");
   const navigate = useNavigate();
   const { cartItems, totalPrice, clearCart } = useCart();
 
@@ -46,8 +46,7 @@ const Checkout = () => {
       e.phone = "Phone must be 6–20 digits and may include +, -, or spaces.";
     if (!regex.postalCode.test(form.postalCode))
       e.postalCode = "Postal code must be 3–12 characters (letters/numbers).";
-    if (!regex.city.test(form.city))
-      e.city = "City must be 2–50 letters only.";
+    if (!regex.city.test(form.city)) e.city = "City must be 2–50 letters only.";
     if (!regex.address.test(form.address))
       e.address = "Address must be 5–200 characters.";
 
@@ -223,7 +222,7 @@ const Checkout = () => {
         </div>
 
         {/* Order Summary */}
-        <div className="col-md-5">
+        <div className="col-md-5 mt-4">
           <div className="card p-3">
             <h5>Order Summary</h5>
             <hr />

@@ -12,24 +12,32 @@
     justify-content: space-evenly;
   }
   .banner-container .banner-content {
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100% !important;
     padding: 20px;
+    margin: 0;
   }
 
   .banner-container .banner-image {
-    width: 100% !important;
+    display: none;
   }
   .btn-banner {
-  background-color: black;
-  color: white;
-  margin-right: 10px;
-  padding: 20px 50px;
-  margin-bottom: 20px;
-}
-
+    background-color: black;
+    color: white;
+    margin-right: 10px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+  }
+  .news-letter-section form{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+  }
 }
 .banner-container .banner-content {
   height: 80vh;
@@ -81,7 +89,7 @@
 }
 
 .card-section .card {
-  text-align: left;
+  text-align: left !important;
   padding: 10px;
   box-shadow: rgba(38, 57, 77, 0.655) 0px 20px 30px -10px;
   border-radius: 16px;
@@ -90,12 +98,14 @@
 }
 
 .card img {
-  border-radius: 16px;
   height: 300px;
   object-fit: cover;
   width: 100%;
 }
+.card h1,h2,h3,h4,h5,h6,p{
 
+  text-align: left !important;
+}
 .card p {
   font-size: 14px;
 }
@@ -133,6 +143,7 @@
 
 .news-letter-section h1 {
   font-size: 60px;
+  text-align: center;
 }
 
 .news-letter-section input {

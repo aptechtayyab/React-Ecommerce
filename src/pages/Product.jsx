@@ -4,7 +4,7 @@ import { productData } from "../data/products";
 import DynamicTitle from "../hooks/DynamicTitle";
 
 const Product = () => {
-  DynamicTitle("Ecom - Products")
+  DynamicTitle("Ecom - Products");
   // Unique categories nikalne ka tareeqa
   const categories = [...new Set(productData.map((p) => p.category))];
 
@@ -32,7 +32,7 @@ const Product = () => {
         <div className="container">
           <div className="row">
             {/* Search Box */}
-            <div className="col-6">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="form-group mb-3">
                 <label htmlFor="search" className="form-label">
                   Search
@@ -49,7 +49,7 @@ const Product = () => {
             </div>
 
             {/* Category Filter */}
-            <div className="col-6">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <label htmlFor="category" className="form-label">
                 Filter by category
               </label>
@@ -70,24 +70,29 @@ const Product = () => {
           </div>
 
           {/* Products Grid */}
-          <div className="row">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
-                <div className="col-4 mb-4" key={product.id}>
-                  <Card
-                    id={product.id}
-                    image={product.image}
-                    title={product.title}
-                    price={product.price}
-                    description={product.description}
-                    category={product.category}
-                  />
-                </div>
-              ))
-            ) : (
-              <p className="text-center fs-4 mt-4">No products found.</p>
-            )}
-          </div>
+          <center>
+            <div className="row">
+              {filteredProducts.length > 0 ? (
+                filteredProducts.map((product) => (
+                  <div
+                    className="col-lg-4 col-md-4 col-sm-12 my-4"
+                    key={product.id}
+                  >
+                    <Card
+                      id={product.id}
+                      image={product.image}
+                      title={product.title}
+                      price={product.price}
+                      description={product.description}
+                      category={product.category}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p className="text-center fs-4 mt-4">No products found.</p>
+              )}
+            </div>
+          </center>
         </div>
       </main>
     </>

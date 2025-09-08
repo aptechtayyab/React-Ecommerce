@@ -4,7 +4,8 @@ import "../css/header.css";
 
 const Header = () => {
   const { cartItems } = useCart();
-  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  // Unique products ka count
+  const cartCount = cartItems.length;
 
   return (
     <nav className="navbar navbar-expand-lg">
